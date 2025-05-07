@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('https://ushasrifarm.github.io/tendermushrooms/back.png')no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.6);
+      min-height: 100vh;
+      padding: 30px 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    .title-section {
+      margin-bottom: 30px;
+    }
+
+    .intro-line {
+      font-size: 1.9em;
+      font-weight: 500;
+    }
+
+    .highlight {
+      font-weight: bold;
+      color: #FFD700;
+    }
+
+    .main-title {
+      font-size: 3.5em;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .tagline {
+      font-size: 1.2em;
+      font-style: italic;
+      color: #cccccc;
+      margin-top: 5px;
+      
+    }
+
+    .contact-boxes {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: 100%;
+    }
+
+    .box {
+      background-color: rgba(255, 255, 255, 0.15);
+      border: 1px solid #fff;
+      border-radius: 12px;
+      padding: 18px;
+      text-align: center;
+      font-size: 1em;
+      transition: transform 0.3s;
+    }
+
+    .box:hover {
+      transform: scale(1.03);
+    }
+
+    a {
+      color: #00ffcc;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @media (min-width: 768px) {
+      .intro-line {
+        font-size: 2em;
+      }
+
+      .main-title {
+        font-size: 3.5em;
+      }
+
+      .tagline {
+        font-size: 1.5em;
+      }
+
+      .contact-boxes {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 800px;
+      }
+
+      .box {
+        flex: 1 1 40%;
+        margin: 10px;
+        font-size: 1.2em;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="overlay">
+    <div class="title-section">
+      <p class="intro-line"><span class="highlight">UshaSri Farm</span> presents</p>
+      <h1 class="main-title">Tender Mushrooms</h1>
+      <p class="tagline">Quality uplifts the trust</p>
+    </div>
+
+    <div class="contact-boxes">
+      <a  href="tel:+917353465926" class="box">Call: +91-7353465926</a>
+      <a   href="https://wa.me/7353465926" target="_blank"   class="box"   >WhatsApp</a>
+      <a  href="https://instagram.com/ushasrifarm" target="_blank" class="box" >Instagram</a>
+      <a href="https://maps.app.goo.gl/54NeH1kRphLRUL2d9?g_st=aw" target="_blank" class="box">📍 Visit Our Farm</a>
+    </div>
+  </div>
+
+    </div>
+  </div>
+</body>
+</html>
