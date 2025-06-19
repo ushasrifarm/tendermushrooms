@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mushroom Products</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      background: url('https://ushasrifarm.github.io/tendermushrooms/back.png') no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2.5em;
+      color: #FFD700;
+    }
+
+    .product {
+      background-color: rgba(0, 0, 0, 0.7);
+      border: 1px solid #fff;
+      border-radius: 12px;
+      margin: 20px auto;
+      padding: 20px;
+      max-width: 500px;
+      text-align: center;
+    }
+
+    .product img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .product-details {
+      margin-top: 15px;
+    }
+
+    .quantity-row {
+      margin-top: 10px;
+      position: relative;
+      display: inline-block;
+      width: 70%;
+      max-width: 200px;
+    }
+
+    .quantity-row input {
+      width: 100%;
+      padding: 8px 35px 8px 10px;
+      font-size: 1em;
+      border-radius: 5px;
+      border: none;
+      box-sizing: border-box;
+    }
+
+    .quantity-row::after {
+      content: "kg";
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #aaa;
+      pointer-events: none;
+    }
+
+    .total-price {
+      margin-top: 8px;
+      font-size: 1.1em;
+      color: #00ffcc;
+    }
+
+    .book-btn {
+      display: inline-block;
+      margin-top: 10px;
+      background-color: #00ffcc;
+      color: black;
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .book-btn:hover {
+      background-color: #00ccaa;
+    }
+
+    @media (max-width: 600px) {
+      .product {
+        margin: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<h1>Our Mushroom Products</h1>
+
+<!-- Product 1 -->
+<div class="product">
+  <img src="https://ushasrifarm.github.io/tendermushrooms/product1.jpg" alt="Fresh Oyster Mushroom">
+  <div class="product-details">
+    <h2>Fresh Oyster Mushroom</h2>
+    <p>₹250/kg</p>
+
+    <div class="quantity-row">
+      <input list="qtyOptions1" id="qty1" placeholder="Enter quantity">
+      <datalist id="qtyOptions1">
+        <option value="1">
+        <option value="2">
+        <option value="5">
+      </datalist>
+    </div>
+
+    <div id="total1" class="total-price"></div>
+
+    <a id="btn1" target="_blank" class="book-btn">📱 Book on WhatsApp</a>
+  </div>
+</div>
+
+<!-- Product 2 -->
+<div class="product">
+  <img src="https://ushasrifarm.github.io/tendermushrooms/product2.jpg" alt="Sun Dried Oyster Mushroom">
+  <div class="product-details">
+    <h2>Sun Dried Oyster Mushroom</h2>
+    <p>₹2500/kg</p>
+
+    <div class="quantity-row">
+      <input list="qtyOptions2" id="qty2" placeholder="Enter quantity">
+      <datalist id="qtyOptions2">
+        <option value="1">
+        <option value="2">
+        <option value="5">
+      </datalist>
+    </div>
+
+    <div id="total2" class="total-price"></div>
+
+    <a id="btn2" target="_blank" class="book-btn">📱 Book on WhatsApp</a>
+  </div>
+</div>
+
+<!-- Product 3 -->
+<div class="product">
+  <img src="https://ushasrifarm.github.io/tendermushrooms/product3.jpg" alt="Powder: Sun Dried Oyster Mushroom">
+  <div class="product-details">
+    <h2>Powder: Sun Dried Oyster Mushroom</h2>
+    <p>₹2800/kg</p>
+
+    <div class="quantity-row">
+      <input list="qtyOptions3" id="qty3" placeholder="Enter quantity">
+      <datalist id="qtyOptions3">
+        <option value="1">
+        <option value="2">
+        <option value="5">
+      </datalist>
+    </div>
+
+    <div id="total3" class="total-price"></div>
+
+    <a id="btn3" target="_blank" class="book-btn">📱 Book on WhatsApp</a>
+  </div>
+</div>
+
+<script>
+  function setupProduct(productName, pricePerKg, inputId, totalId, btnId) {
+    const input = document.getElementById(inputId);
+    const total = document.getElementById(totalId);
+    const button = document.getElementById(btnId);
+    const phone = "918296393933";
+
+    input.addEventListener("input", () => {
+      let val = input.value.replace(/[^0-9.]/g, '');
+      const parts = val.split('.');
+      if (parts.length > 2) {
+        val = parts[0] + '.' + parts[1];
+      }
+      input.value = val;
+
+      const qty = parseFloat(val);
+      if (!isNaN(qty)) {
+        const totalPrice = qty * pricePerKg;
+        total.textContent = `Total: ₹${totalPrice.toFixed(2)}`;
+
+        const message = `*Order:* ${productName}\n*Quantity:* ${qty} kg\n*Total:* ₹${totalPrice.toFixed(2)}`;
+        button.href = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+      } else {
+        total.textContent = '';
+        button.href = "#";
+      }
+    });
+  }
+
+  setupProduct("Fresh Oyster Mushroom", 250, "qty1", "total1", "btn1");
+  setupProduct("Sun Dried Oyster Mushroom", 2500, "qty2", "total2", "btn2");
+  setupProduct("Powder: Sun Dried Oyster Mushroom", 2800, "qty3", "total3", "btn3");
+</script>
+
+</body>
+</html>
